@@ -1,0 +1,613 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #7160df;
+  --bg: #f5f6fc;
+  --card: #ffffff;
+  --text: #20243a;
+  --muted: #85899b;
+  --border: #e9eaf2;
+  --sidebar: #171b2e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  min-height: 100vh;
+  transition: .25s;
+}
+
+body.dark {
+  --bg: #101426;
+  --card: #20263d;
+  --text: #f3f3f8;
+  --muted: #a5abc1;
+  --border: #353c55;
+}
+
+.sidebar {
+  width: 245px;
+  background: var(--sidebar);
+  color: white;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.logo {
+  font-size: 23px;
+  color: #a99aff;
+  margin-bottom: 45px;
+}
+
+.nav-label {
+  color: #85899b;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.sidebar nav {
+  display: grid;
+  gap: 10px;
+}
+
+.sidebar nav a {
+  text-decoration: none;
+  color: #b9bdd0;
+  padding: 14px;
+  border-radius: 9px;
+  font-size: 13px;
+  transition: .2s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #373052;
+  color: white;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  color: #a5abc1;
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.sidebar-bottom span {
+  color: #777e98;
+  font-size: 10px;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 35px;
+}
+
+.topbar, .section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.topbar h1 {
+  font-size: 27px;
+}
+
+.topbar p, .section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 7px;
+}
+
+.top-actions {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  border: none;
+  background: var(--primary);
+  color: white;
+  padding: 12px 17px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: .2s;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  opacity: .9;
+}
+
+.theme-btn {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.welcome {
+  background: linear-gradient(120deg, #6555ca, #9584f4);
+  color: white;
+  padding: 30px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.welcome h2 {
+  margin-bottom: 10px;
+}
+
+.welcome p {
+  font-size: 13px;
+  opacity: .85;
+}
+
+.welcome span {
+  font-size: 12px;
+  background: #ffffff22;
+  padding: 12px;
+  border-radius: 9px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+  margin-bottom: 25px;
+}
+
+.stat-card, .panel, .progress-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 23px;
+}
+
+.stat-card span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stat-card h2 {
+  font-size: 30px;
+  margin: 15px 0 8px;
+}
+
+.stat-card small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.panel {
+  margin-bottom: 25px;
+  scroll-margin-top: 20px;
+}
+
+.section-heading h2 {
+  font-size: 19px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary);
+}
+
+.toolbar input {
+  flex: 1;
+}
+
+.toolbar select {
+  width: 170px;
+}
+
+.task-item {
+  padding: 17px 5px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.task-info {
+  min-width: 0;
+}
+
+.task-info strong {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.task-info p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 7px;
+  overflow-wrap: anywhere;
+}
+
+.task-meta {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 9px;
+}
+
+.task-actions {
+  display: flex;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.task-actions button {
+  font-size: 11px;
+  padding: 9px 11px;
+}
+
+.edit-btn {
+  background: #3e87d9;
+}
+
+.delete-btn {
+  background: #dc515d;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.High {
+  background: #ffe1e2;
+  color: #c52d3b;
+}
+
+.Medium {
+  background: #fff0d2;
+  color: #a66c00;
+}
+
+.Low {
+  background: #dff5e8;
+  color: #21844b;
+}
+
+.status-badge {
+  background: #ece9ff;
+  color: #6555ca;
+}
+
+.empty {
+  text-align: center;
+  padding: 35px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Kanban */
+
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.kanban-column {
+  background: var(--bg);
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  min-width: 0;
+}
+
+.kanban-column h3 {
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.kanban-column h3 span {
+  float: right;
+  color: var(--muted);
+}
+
+.drop-zone {
+  min-height: 130px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  border-radius: 8px;
+}
+
+.drop-zone.drag-over {
+  background: #7160df18;
+  outline: 2px dashed var(--primary);
+}
+
+.kanban-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 14px;
+  cursor: grab;
+}
+
+.kanban-card strong {
+  font-size: 12px;
+}
+
+.kanban-card p {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 8px;
+}
+
+.kanban-card.dragging {
+  opacity: .4;
+}
+
+/* Analytics */
+
+.analytics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.progress-box h3 {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 12px;
+  background: var(--bg);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 17px;
+}
+
+#progressBar {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #7160df, #a99aff);
+  border-radius: 20px;
+  transition: width .4s;
+}
+
+.progress-box h2 {
+  margin-bottom: 8px;
+}
+
+.progress-box p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.priority-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px;
+  font-size: 11px;
+}
+
+/* Modal */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: #090c1ac9;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  z-index: 10;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 470px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--card);
+  color: var(--text);
+  padding: 25px;
+  border-radius: 15px;
+  animation: appear .2s ease;
+}
+
+@keyframes appear {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 23px;
+}
+
+.modal-header h2 {
+  font-size: 19px;
+}
+
+.close-btn {
+  background: var(--bg);
+  color: var(--text);
+  padding: 8px 11px;
+}
+
+#taskForm {
+  display: grid;
+  gap: 10px;
+}
+
+#taskForm label {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+#taskForm textarea {
+  resize: vertical;
+  min-height: 75px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.cancel-btn {
+  background: #777e91;
+}
+
+@media (max-width: 1050px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .main {
+    padding: 23px;
+  }
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    width: 70px;
+    padding: 20px 6px;
+  }
+
+  .logo {
+    font-size: 11px;
+    margin-bottom: 25px;
+  }
+
+  .nav-label, .sidebar-bottom {
+    display: none;
+  }
+
+  .sidebar nav a {
+    font-size: 10px;
+    padding: 12px 4px;
+    text-align: center;
+  }
+
+  .main {
+    padding: 18px 12px;
+  }
+
+  .topbar h1 {
+    font-size: 21px;
+  }
+
+  .welcome {
+    padding: 20px;
+  }
+
+  .welcome span {
+    display: none;
+  }
+
+  .kanban {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .toolbar select {
+    width: 100%;
+  }
+
+  .task-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .task-actions {
+    width: 100%;
+  }
+
+  .task-actions button {
+    flex: 1;
+  }
+
+  .top-actions button {
+    padding: 10px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 380px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartTask - Project Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h2 class="logo">⚡ SmartTask</h2>
+
+    <p class="nav-label">WORKSPACE</p>
+    <nav>
+      <a href="#dashboard" class="active">▦ Dashboard</a>
+      <a href="#tasks">☑ My Tasks</a>
+      <a href="#board">▤ Kanban Board</a>
+      <a href="#analytics">▥ Analytics</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <p>SmartTask v2.0</p>
+      <span>Built with HTML, CSS & JS</span>
+    </div>
+  </aside>
+
+  <main class="main" id="dashboard">
+
+    <header class="topbar">
+      <div>
+        <h1>Dashboard</h1>
+        <p>Manage your work efficiently.</p>
+      </div>
+      <div class="top-actions">
+        <button class="theme-btn" id="themeBtn">☾ Theme</button>
+        <button id="headerAddBtn">+ New Task</button>
+      </div>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <h2>Welcome to SmartTask 👋</h2>
+        <p>Stay organized. Stay productive. Get things done.</p>
+      </div>
+        <span>🚀 Productivity Workspace</span>
+    </section>
+
+    <section class="stats">
+      <div class="stat-card">
+        <span>Total Tasks</span>
+        <h2 id="totalTasks">0</h2>
+        <small>All your tasks</small>
+      </div>
+      <div class="stat-card">
+        <span>Pending</span>
+        <h2 id="pendingTasks">0</h2>
+        <small>Waiting to start</small>
+      </div>
+      <div class="stat-card">
+        <span>In Progress</span>
+        <h2 id="progressTasks">0</h2>
+        <small>Currently working</small>
+      </div>
+      <div class="stat-card">
+        <span>Completed</span>
+        <h2 id="completedTasks">0</h2>
+        <small>Successfully finished</small>
+      </div>
+    </section>
+
+    <section class="panel" id="tasks">
+      <div class="section-heading">
+        <div>
+          <h2>Task Management</h2>
+          <p>Organize and manage your tasks.</p>
+        </div>
+        <button id="addBtn">+ Add Task</button>
+      </div>
+
+      <div class="toolbar">
+        <input id="searchInput" type="search"
+          placeholder="Search tasks...">
+
+        <select id="filterSelect">
+          <option value="all">All Status</option>
+          <option value="Pending">Pending</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+
+        <select id="priorityFilter">
+          <option value="all">All Priorities</option>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
+
+      <div class="task-list" id="taskList"></div>
+    </section>
+
+    <section class="panel" id="board">
+      <div class="section-heading">
+        <div>
+          <h2>Kanban Board</h2>
+          <p>Drag tasks between different stages.</p>
+        </div>
+      </div>
+
+      <div class="kanban">
+        <div class="kanban-column" data-status="Pending">
+          <h3>📝 Pending <span id="pendingCount">0</span></h3>
+          <div class="drop-zone" id="pendingColumn"></div>
+        </div>
+
+        <div class="kanban-column" data-status="In Progress">
+          <h3>⚡ In Progress <span id="progressCount">0</span></h3>
+          <div class="drop-zone" id="progressColumn"></div>
+        </div>
+
+        <div class="kanban-column" data-status="Completed">
+          <h3>✅ Completed <span id="doneCount">0</span></h3>
+          <div class="drop-zone" id="completedColumn"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="analytics">
+      <div class="section-heading">
+        <div>
+          <h2>Task Analytics</h2>
+          <p>Your overall productivity overview.</p>
+        </div>
+      </div>
+
+      <div class="analytics">
+        <div class="progress-box">
+          <h3>Completion Rate</h3>
+          <div class="progress-track">
+            <div id="progressBar"></div>
+          </div>
+          <h2 id="progressPercent">0%</h2>
+          <p>Tasks completed successfully</p>
+        </div>
+
+        <div class="progress-box">
+          <h3>Priority Distribution</h3>
+          <div id="priorityAnalytics"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 SmartTask. Built with passion and JavaScript.
+    </footer>
+  </main>
+
+  <!-- Task Modal -->
+  <div class="modal" id="taskModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Create New Task</h2>
+        <button type="button" class="close-btn" id="closeModal">✕</button>
+      </div>
+
+      <form id="taskForm">
+        <label>Task Title</label>
+        <input id="taskTitle" type="text"
+          placeholder="Enter task name" required maxlength="100">
+
+        <label>Description</label>
+        <textarea id="taskDescription"
+          placeholder="Describe your task..." maxlength="500"></textarea>
+
+        <label>Priority</label>
+        <select id="taskPriority">
+          <option value="Low">Low</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <label>Status</label>
+        <select id="taskStatus">
+          <option value="Pending">Pending</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+
+        <label>Due Date</label>
+        <input id="taskDate" type="date">
+
+        <div class="modal-actions">
+          <button type="button" class="cancel-btn" id="cancelBtn">
+            Cancel
+          </button>
+          <button type="submit" id="saveBtn">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
